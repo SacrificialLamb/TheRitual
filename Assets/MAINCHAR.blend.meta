@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 7de6ce855b175f34ebd6b4f9d054b073
-timeCreated: 1454168572
+guid: 5c8bda31eb4cfe446b026ff6f07add7d
+timeCreated: 1454191261
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -553,7 +553,7 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-    - name: MAINCHAR 1(Clone)
+    - name: MAINCHAR(Clone)
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}

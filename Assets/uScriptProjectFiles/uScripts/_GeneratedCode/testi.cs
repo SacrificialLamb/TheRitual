@@ -25,11 +25,11 @@ public class testi : uScriptLogic
    //external parameters
    
    //local nodes
-   UnityEngine.GameObject local_1_UnityEngine_GameObject = default(UnityEngine.GameObject);
-   UnityEngine.GameObject local_1_UnityEngine_GameObject_previous = null;
-   UnityEngine.GameObject local_3_UnityEngine_GameObject = default(UnityEngine.GameObject);
-   UnityEngine.GameObject local_3_UnityEngine_GameObject_previous = null;
    System.Boolean local_6_System_Boolean = (bool) false;
+   UnityEngine.GameObject local_collider_UnityEngine_GameObject = default(UnityEngine.GameObject);
+   UnityEngine.GameObject local_collider_UnityEngine_GameObject_previous = null;
+   UnityEngine.GameObject local_pickedObj_UnityEngine_GameObject = default(UnityEngine.GameObject);
+   UnityEngine.GameObject local_pickedObj_UnityEngine_GameObject_previous = null;
    
    //owner nodes
    
@@ -61,23 +61,37 @@ public class testi : uScriptLogic
    UnityEngine.GameObject logic_uScriptAct_SetGameObject_TargetGameObject_8;
    bool logic_uScriptAct_SetGameObject_Out_8 = true;
    //pointer to script instanced logic node
-   uScriptAct_AttachToGameObject logic_uScriptAct_AttachToGameObject_uScriptAct_AttachToGameObject_9 = new uScriptAct_AttachToGameObject( );
-   UnityEngine.GameObject logic_uScriptAct_AttachToGameObject_Target_9 = default(UnityEngine.GameObject);
-   UnityEngine.GameObject logic_uScriptAct_AttachToGameObject_Attachment_9 = default(UnityEngine.GameObject);
-   System.Boolean logic_uScriptAct_AttachToGameObject_UseRelativeOffset_9 = (bool) false;
-   UnityEngine.Vector3 logic_uScriptAct_AttachToGameObject_RelativeOffset_9 = new Vector3( (float)0, (float)0, (float)0 );
-   System.Boolean logic_uScriptAct_AttachToGameObject_UseRelativeRotation_9 = (bool) false;
-   UnityEngine.Vector3 logic_uScriptAct_AttachToGameObject_RelativeRotation_9 = new Vector3( (float)0, (float)0, (float)0 );
-   bool logic_uScriptAct_AttachToGameObject_Out_9 = true;
+   uScriptCon_CompareBoolState logic_uScriptCon_CompareBoolState_uScriptCon_CompareBoolState_9 = new uScriptCon_CompareBoolState( );
+   System.Boolean logic_uScriptCon_CompareBoolState_target_9 = (bool) false;
+   System.Boolean logic_uScriptCon_CompareBoolState_previousState_9 = (bool) false;
+   bool logic_uScriptCon_CompareBoolState_Out_9 = true;
+   bool logic_uScriptCon_CompareBoolState_IsTrue_9 = true;
+   bool logic_uScriptCon_CompareBoolState_IsFalse_9 = true;
+   bool logic_uScriptCon_CompareBoolState_WasTrue_9 = true;
+   bool logic_uScriptCon_CompareBoolState_WasFalse_9 = true;
    //pointer to script instanced logic node
-   uScriptCon_CompareBoolState logic_uScriptCon_CompareBoolState_uScriptCon_CompareBoolState_10 = new uScriptCon_CompareBoolState( );
-   System.Boolean logic_uScriptCon_CompareBoolState_target_10 = (bool) false;
-   System.Boolean logic_uScriptCon_CompareBoolState_previousState_10 = (bool) false;
-   bool logic_uScriptCon_CompareBoolState_Out_10 = true;
-   bool logic_uScriptCon_CompareBoolState_IsTrue_10 = true;
-   bool logic_uScriptCon_CompareBoolState_IsFalse_10 = true;
-   bool logic_uScriptCon_CompareBoolState_WasTrue_10 = true;
-   bool logic_uScriptCon_CompareBoolState_WasFalse_10 = true;
+   uScriptCon_CheckDistance logic_uScriptCon_CheckDistance_uScriptCon_CheckDistance_11 = new uScriptCon_CheckDistance( );
+   UnityEngine.GameObject logic_uScriptCon_CheckDistance_A_11 = default(UnityEngine.GameObject);
+   UnityEngine.GameObject logic_uScriptCon_CheckDistance_B_11 = default(UnityEngine.GameObject);
+   System.Single logic_uScriptCon_CheckDistance_Distance_11 = (float) 1;
+   bool logic_uScriptCon_CheckDistance_Closer_11 = true;
+   bool logic_uScriptCon_CheckDistance_Further_11 = true;
+   bool logic_uScriptCon_CheckDistance_Equal_11 = true;
+   //pointer to script instanced logic node
+   uScriptAct_SetGameObject logic_uScriptAct_SetGameObject_uScriptAct_SetGameObject_12 = new uScriptAct_SetGameObject( );
+   UnityEngine.GameObject logic_uScriptAct_SetGameObject_Value_12 = default(UnityEngine.GameObject);
+   UnityEngine.GameObject logic_uScriptAct_SetGameObject_TargetGameObject_12;
+   bool logic_uScriptAct_SetGameObject_Out_12 = true;
+   //pointer to script instanced logic node
+   uScriptAct_SetParent logic_uScriptAct_SetParent_uScriptAct_SetParent_13 = new uScriptAct_SetParent( );
+   UnityEngine.GameObject[] logic_uScriptAct_SetParent_Target_13 = new UnityEngine.GameObject[] {};
+   UnityEngine.GameObject logic_uScriptAct_SetParent_Parent_13 = default(UnityEngine.GameObject);
+   bool logic_uScriptAct_SetParent_Out_13 = true;
+   //pointer to script instanced logic node
+   uScriptAct_SetParent logic_uScriptAct_SetParent_uScriptAct_SetParent_14 = new uScriptAct_SetParent( );
+   UnityEngine.GameObject[] logic_uScriptAct_SetParent_Target_14 = new UnityEngine.GameObject[] {};
+   UnityEngine.GameObject logic_uScriptAct_SetParent_Parent_14 = default(UnityEngine.GameObject);
+   bool logic_uScriptAct_SetParent_Out_14 = true;
    
    //event nodes
    UnityEngine.Vector3 event_UnityEngine_GameObject_RelativeVelocity_0 = new Vector3( (float)0, (float)0, (float)0 );
@@ -110,27 +124,59 @@ public class testi : uScriptLogic
    void SyncUnityHooks( )
    {
       SyncEventListeners( );
-      if ( null == logic_uScriptAct_AttachToGameObject_Target_9 || false == m_RegisteredForEvents )
+      if ( null == logic_uScriptCon_CheckDistance_B_11 || false == m_RegisteredForEvents )
       {
-         logic_uScriptAct_AttachToGameObject_Target_9 = GameObject.Find( "/ThirdPersonController" ) as UnityEngine.GameObject;
+         logic_uScriptCon_CheckDistance_B_11 = GameObject.Find( "/ThirdPersonController" ) as UnityEngine.GameObject;
+      }
+      if ( null == logic_uScriptAct_SetParent_Parent_14 || false == m_RegisteredForEvents )
+      {
+         logic_uScriptAct_SetParent_Parent_14 = GameObject.Find( "/ThirdPersonController" ) as UnityEngine.GameObject;
       }
       //if our game object reference was changed then we need to reset event listeners
-      if ( local_1_UnityEngine_GameObject_previous != local_1_UnityEngine_GameObject || false == m_RegisteredForEvents )
+      if ( local_collider_UnityEngine_GameObject_previous != local_collider_UnityEngine_GameObject || false == m_RegisteredForEvents )
       {
          //tear down old listeners
          
-         local_1_UnityEngine_GameObject_previous = local_1_UnityEngine_GameObject;
+         local_collider_UnityEngine_GameObject_previous = local_collider_UnityEngine_GameObject;
          
          //setup new listeners
       }
       //if our game object reference was changed then we need to reset event listeners
-      if ( local_3_UnityEngine_GameObject_previous != local_3_UnityEngine_GameObject || false == m_RegisteredForEvents )
+      if ( local_pickedObj_UnityEngine_GameObject_previous != local_pickedObj_UnityEngine_GameObject || false == m_RegisteredForEvents )
       {
          //tear down old listeners
+         if ( null != local_pickedObj_UnityEngine_GameObject_previous )
+         {
+            {
+               uScript_Update component = local_pickedObj_UnityEngine_GameObject_previous.GetComponent<uScript_Update>();
+               if ( null != component )
+               {
+                  component.OnUpdate -= Instance_OnUpdate_10;
+                  component.OnLateUpdate -= Instance_OnLateUpdate_10;
+                  component.OnFixedUpdate -= Instance_OnFixedUpdate_10;
+               }
+            }
+         }
          
-         local_3_UnityEngine_GameObject_previous = local_3_UnityEngine_GameObject;
+         local_pickedObj_UnityEngine_GameObject_previous = local_pickedObj_UnityEngine_GameObject;
          
          //setup new listeners
+         if ( null != local_pickedObj_UnityEngine_GameObject )
+         {
+            {
+               uScript_Update component = local_pickedObj_UnityEngine_GameObject.GetComponent<uScript_Update>();
+               if ( null == component )
+               {
+                  component = local_pickedObj_UnityEngine_GameObject.AddComponent<uScript_Update>();
+               }
+               if ( null != component )
+               {
+                  component.OnUpdate += Instance_OnUpdate_10;
+                  component.OnLateUpdate += Instance_OnLateUpdate_10;
+                  component.OnFixedUpdate += Instance_OnFixedUpdate_10;
+               }
+            }
+         }
       }
    }
    
@@ -138,22 +184,50 @@ public class testi : uScriptLogic
    {
       SyncEventListeners( );
       //if our game object reference was changed then we need to reset event listeners
-      if ( local_1_UnityEngine_GameObject_previous != local_1_UnityEngine_GameObject || false == m_RegisteredForEvents )
+      if ( local_collider_UnityEngine_GameObject_previous != local_collider_UnityEngine_GameObject || false == m_RegisteredForEvents )
       {
          //tear down old listeners
          
-         local_1_UnityEngine_GameObject_previous = local_1_UnityEngine_GameObject;
+         local_collider_UnityEngine_GameObject_previous = local_collider_UnityEngine_GameObject;
          
          //setup new listeners
       }
       //if our game object reference was changed then we need to reset event listeners
-      if ( local_3_UnityEngine_GameObject_previous != local_3_UnityEngine_GameObject || false == m_RegisteredForEvents )
+      if ( local_pickedObj_UnityEngine_GameObject_previous != local_pickedObj_UnityEngine_GameObject || false == m_RegisteredForEvents )
       {
          //tear down old listeners
+         if ( null != local_pickedObj_UnityEngine_GameObject_previous )
+         {
+            {
+               uScript_Update component = local_pickedObj_UnityEngine_GameObject_previous.GetComponent<uScript_Update>();
+               if ( null != component )
+               {
+                  component.OnUpdate -= Instance_OnUpdate_10;
+                  component.OnLateUpdate -= Instance_OnLateUpdate_10;
+                  component.OnFixedUpdate -= Instance_OnFixedUpdate_10;
+               }
+            }
+         }
          
-         local_3_UnityEngine_GameObject_previous = local_3_UnityEngine_GameObject;
+         local_pickedObj_UnityEngine_GameObject_previous = local_pickedObj_UnityEngine_GameObject;
          
          //setup new listeners
+         if ( null != local_pickedObj_UnityEngine_GameObject )
+         {
+            {
+               uScript_Update component = local_pickedObj_UnityEngine_GameObject.GetComponent<uScript_Update>();
+               if ( null == component )
+               {
+                  component = local_pickedObj_UnityEngine_GameObject.AddComponent<uScript_Update>();
+               }
+               if ( null != component )
+               {
+                  component.OnUpdate += Instance_OnUpdate_10;
+                  component.OnLateUpdate += Instance_OnLateUpdate_10;
+                  component.OnFixedUpdate += Instance_OnFixedUpdate_10;
+               }
+            }
+         }
       }
    }
    
@@ -201,6 +275,18 @@ public class testi : uScriptLogic
    
    void UnregisterEventListeners( )
    {
+      if ( null != local_pickedObj_UnityEngine_GameObject )
+      {
+         {
+            uScript_Update component = local_pickedObj_UnityEngine_GameObject.GetComponent<uScript_Update>();
+            if ( null != component )
+            {
+               component.OnUpdate -= Instance_OnUpdate_10;
+               component.OnLateUpdate -= Instance_OnLateUpdate_10;
+               component.OnFixedUpdate -= Instance_OnFixedUpdate_10;
+            }
+         }
+      }
       if ( null != event_UnityEngine_GameObject_Instance_0 )
       {
          {
@@ -233,8 +319,11 @@ public class testi : uScriptLogic
       logic_uScriptCon_IsNull_uScriptCon_IsNull_4.SetParent(g);
       logic_uScriptCon_CompareBoolState_uScriptCon_CompareBoolState_7.SetParent(g);
       logic_uScriptAct_SetGameObject_uScriptAct_SetGameObject_8.SetParent(g);
-      logic_uScriptAct_AttachToGameObject_uScriptAct_AttachToGameObject_9.SetParent(g);
-      logic_uScriptCon_CompareBoolState_uScriptCon_CompareBoolState_10.SetParent(g);
+      logic_uScriptCon_CompareBoolState_uScriptCon_CompareBoolState_9.SetParent(g);
+      logic_uScriptCon_CheckDistance_uScriptCon_CheckDistance_11.SetParent(g);
+      logic_uScriptAct_SetGameObject_uScriptAct_SetGameObject_12.SetParent(g);
+      logic_uScriptAct_SetParent_uScriptAct_SetParent_13.SetParent(g);
+      logic_uScriptAct_SetParent_uScriptAct_SetParent_14.SetParent(g);
    }
    public void Awake()
    {
@@ -363,17 +452,53 @@ public class testi : uScriptLogic
       Relay_OnInputEvent_5( );
    }
    
+   void Instance_OnUpdate_10(object o, System.EventArgs e)
+   {
+      //reset event call
+      //if it ever goes above MaxRelayCallCount before being reset
+      //then we assume it is stuck in an infinite loop
+      if ( relayCallCount < MaxRelayCallCount ) relayCallCount = 0;
+      
+      //fill globals
+      //relay event to nodes
+      Relay_OnUpdate_10( );
+   }
+   
+   void Instance_OnLateUpdate_10(object o, System.EventArgs e)
+   {
+      //reset event call
+      //if it ever goes above MaxRelayCallCount before being reset
+      //then we assume it is stuck in an infinite loop
+      if ( relayCallCount < MaxRelayCallCount ) relayCallCount = 0;
+      
+      //fill globals
+      //relay event to nodes
+      Relay_OnLateUpdate_10( );
+   }
+   
+   void Instance_OnFixedUpdate_10(object o, System.EventArgs e)
+   {
+      //reset event call
+      //if it ever goes above MaxRelayCallCount before being reset
+      //then we assume it is stuck in an infinite loop
+      if ( relayCallCount < MaxRelayCallCount ) relayCallCount = 0;
+      
+      //fill globals
+      //relay event to nodes
+      Relay_OnFixedUpdate_10( );
+   }
+   
    void Relay_OnEnterCollision_0()
    {
       if (true == CheckDebugBreak("7e541fea-1cf4-4bc0-9867-93f7096f374c", "On_Collision", Relay_OnEnterCollision_0)) return; 
-      local_1_UnityEngine_GameObject = event_UnityEngine_GameObject_GameObject_0;
+      local_collider_UnityEngine_GameObject = event_UnityEngine_GameObject_GameObject_0;
       {
          //if our game object reference was changed then we need to reset event listeners
-         if ( local_1_UnityEngine_GameObject_previous != local_1_UnityEngine_GameObject || false == m_RegisteredForEvents )
+         if ( local_collider_UnityEngine_GameObject_previous != local_collider_UnityEngine_GameObject || false == m_RegisteredForEvents )
          {
             //tear down old listeners
             
-            local_1_UnityEngine_GameObject_previous = local_1_UnityEngine_GameObject;
+            local_collider_UnityEngine_GameObject_previous = local_collider_UnityEngine_GameObject;
             
             //setup new listeners
          }
@@ -383,14 +508,14 @@ public class testi : uScriptLogic
    void Relay_OnExitCollision_0()
    {
       if (true == CheckDebugBreak("7e541fea-1cf4-4bc0-9867-93f7096f374c", "On_Collision", Relay_OnExitCollision_0)) return; 
-      local_1_UnityEngine_GameObject = event_UnityEngine_GameObject_GameObject_0;
+      local_collider_UnityEngine_GameObject = event_UnityEngine_GameObject_GameObject_0;
       {
          //if our game object reference was changed then we need to reset event listeners
-         if ( local_1_UnityEngine_GameObject_previous != local_1_UnityEngine_GameObject || false == m_RegisteredForEvents )
+         if ( local_collider_UnityEngine_GameObject_previous != local_collider_UnityEngine_GameObject || false == m_RegisteredForEvents )
          {
             //tear down old listeners
             
-            local_1_UnityEngine_GameObject_previous = local_1_UnityEngine_GameObject;
+            local_collider_UnityEngine_GameObject_previous = local_collider_UnityEngine_GameObject;
             
             //setup new listeners
          }
@@ -400,14 +525,14 @@ public class testi : uScriptLogic
    void Relay_WhileInsideCollision_0()
    {
       if (true == CheckDebugBreak("7e541fea-1cf4-4bc0-9867-93f7096f374c", "On_Collision", Relay_WhileInsideCollision_0)) return; 
-      local_1_UnityEngine_GameObject = event_UnityEngine_GameObject_GameObject_0;
+      local_collider_UnityEngine_GameObject = event_UnityEngine_GameObject_GameObject_0;
       {
          //if our game object reference was changed then we need to reset event listeners
-         if ( local_1_UnityEngine_GameObject_previous != local_1_UnityEngine_GameObject || false == m_RegisteredForEvents )
+         if ( local_collider_UnityEngine_GameObject_previous != local_collider_UnityEngine_GameObject || false == m_RegisteredForEvents )
          {
             //tear down old listeners
             
-            local_1_UnityEngine_GameObject_previous = local_1_UnityEngine_GameObject;
+            local_collider_UnityEngine_GameObject_previous = local_collider_UnityEngine_GameObject;
             
             //setup new listeners
          }
@@ -424,16 +549,16 @@ public class testi : uScriptLogic
             {
                {
                   //if our game object reference was changed then we need to reset event listeners
-                  if ( local_1_UnityEngine_GameObject_previous != local_1_UnityEngine_GameObject || false == m_RegisteredForEvents )
+                  if ( local_collider_UnityEngine_GameObject_previous != local_collider_UnityEngine_GameObject || false == m_RegisteredForEvents )
                   {
                      //tear down old listeners
                      
-                     local_1_UnityEngine_GameObject_previous = local_1_UnityEngine_GameObject;
+                     local_collider_UnityEngine_GameObject_previous = local_collider_UnityEngine_GameObject;
                      
                      //setup new listeners
                   }
                }
-               logic_uScriptCon_GameObjectHasTag_GameObject_2 = local_1_UnityEngine_GameObject;
+               logic_uScriptCon_GameObjectHasTag_GameObject_2 = local_collider_UnityEngine_GameObject;
                
             }
             {
@@ -465,20 +590,48 @@ public class testi : uScriptLogic
                int index = 0;
                {
                   //if our game object reference was changed then we need to reset event listeners
-                  if ( local_3_UnityEngine_GameObject_previous != local_3_UnityEngine_GameObject || false == m_RegisteredForEvents )
+                  if ( local_pickedObj_UnityEngine_GameObject_previous != local_pickedObj_UnityEngine_GameObject || false == m_RegisteredForEvents )
                   {
                      //tear down old listeners
+                     if ( null != local_pickedObj_UnityEngine_GameObject_previous )
+                     {
+                        {
+                           uScript_Update component = local_pickedObj_UnityEngine_GameObject_previous.GetComponent<uScript_Update>();
+                           if ( null != component )
+                           {
+                              component.OnUpdate -= Instance_OnUpdate_10;
+                              component.OnLateUpdate -= Instance_OnLateUpdate_10;
+                              component.OnFixedUpdate -= Instance_OnFixedUpdate_10;
+                           }
+                        }
+                     }
                      
-                     local_3_UnityEngine_GameObject_previous = local_3_UnityEngine_GameObject;
+                     local_pickedObj_UnityEngine_GameObject_previous = local_pickedObj_UnityEngine_GameObject;
                      
                      //setup new listeners
+                     if ( null != local_pickedObj_UnityEngine_GameObject )
+                     {
+                        {
+                           uScript_Update component = local_pickedObj_UnityEngine_GameObject.GetComponent<uScript_Update>();
+                           if ( null == component )
+                           {
+                              component = local_pickedObj_UnityEngine_GameObject.AddComponent<uScript_Update>();
+                           }
+                           if ( null != component )
+                           {
+                              component.OnUpdate += Instance_OnUpdate_10;
+                              component.OnLateUpdate += Instance_OnLateUpdate_10;
+                              component.OnFixedUpdate += Instance_OnFixedUpdate_10;
+                           }
+                        }
+                     }
                   }
                }
                if ( logic_uScriptCon_IsNull_Target_4.Length <= index)
                {
                   System.Array.Resize(ref logic_uScriptCon_IsNull_Target_4, index + 1);
                }
-               logic_uScriptCon_IsNull_Target_4[ index++ ] = local_3_UnityEngine_GameObject;
+               logic_uScriptCon_IsNull_Target_4[ index++ ] = local_pickedObj_UnityEngine_GameObject;
                
             }
          }
@@ -494,7 +647,7 @@ public class testi : uScriptLogic
          }
          if ( test_1 == true )
          {
-            Relay_In_10();
+            Relay_In_9();
          }
       }
       else
@@ -548,32 +701,60 @@ public class testi : uScriptLogic
             {
                {
                   //if our game object reference was changed then we need to reset event listeners
-                  if ( local_1_UnityEngine_GameObject_previous != local_1_UnityEngine_GameObject || false == m_RegisteredForEvents )
+                  if ( local_collider_UnityEngine_GameObject_previous != local_collider_UnityEngine_GameObject || false == m_RegisteredForEvents )
                   {
                      //tear down old listeners
                      
-                     local_1_UnityEngine_GameObject_previous = local_1_UnityEngine_GameObject;
+                     local_collider_UnityEngine_GameObject_previous = local_collider_UnityEngine_GameObject;
                      
                      //setup new listeners
                   }
                }
-               logic_uScriptAct_SetGameObject_Value_8 = local_1_UnityEngine_GameObject;
+               logic_uScriptAct_SetGameObject_Value_8 = local_collider_UnityEngine_GameObject;
                
             }
             {
             }
          }
          logic_uScriptAct_SetGameObject_uScriptAct_SetGameObject_8.In(logic_uScriptAct_SetGameObject_Value_8, out logic_uScriptAct_SetGameObject_TargetGameObject_8);
-         local_3_UnityEngine_GameObject = logic_uScriptAct_SetGameObject_TargetGameObject_8;
+         local_pickedObj_UnityEngine_GameObject = logic_uScriptAct_SetGameObject_TargetGameObject_8;
          {
             //if our game object reference was changed then we need to reset event listeners
-            if ( local_3_UnityEngine_GameObject_previous != local_3_UnityEngine_GameObject || false == m_RegisteredForEvents )
+            if ( local_pickedObj_UnityEngine_GameObject_previous != local_pickedObj_UnityEngine_GameObject || false == m_RegisteredForEvents )
             {
                //tear down old listeners
+               if ( null != local_pickedObj_UnityEngine_GameObject_previous )
+               {
+                  {
+                     uScript_Update component = local_pickedObj_UnityEngine_GameObject_previous.GetComponent<uScript_Update>();
+                     if ( null != component )
+                     {
+                        component.OnUpdate -= Instance_OnUpdate_10;
+                        component.OnLateUpdate -= Instance_OnLateUpdate_10;
+                        component.OnFixedUpdate -= Instance_OnFixedUpdate_10;
+                     }
+                  }
+               }
                
-               local_3_UnityEngine_GameObject_previous = local_3_UnityEngine_GameObject;
+               local_pickedObj_UnityEngine_GameObject_previous = local_pickedObj_UnityEngine_GameObject;
                
                //setup new listeners
+               if ( null != local_pickedObj_UnityEngine_GameObject )
+               {
+                  {
+                     uScript_Update component = local_pickedObj_UnityEngine_GameObject.GetComponent<uScript_Update>();
+                     if ( null == component )
+                     {
+                        component = local_pickedObj_UnityEngine_GameObject.AddComponent<uScript_Update>();
+                     }
+                     if ( null != component )
+                     {
+                        component.OnUpdate += Instance_OnUpdate_10;
+                        component.OnLateUpdate += Instance_OnLateUpdate_10;
+                        component.OnFixedUpdate += Instance_OnFixedUpdate_10;
+                     }
+                  }
+               }
             }
          }
          
@@ -582,7 +763,7 @@ public class testi : uScriptLogic
          
          if ( test_0 == true )
          {
-            Relay_In_9();
+            Relay_In_14();
          }
       }
       else
@@ -595,59 +776,16 @@ public class testi : uScriptLogic
    {
       if ( relayCallCount++ < MaxRelayCallCount )
       {
-         if (true == CheckDebugBreak("1cbd1733-d30d-4cf0-8180-ea480d5bb1dc", "Attach_To_GameObject", Relay_In_9)) return; 
+         if (true == CheckDebugBreak("e7ec3327-f42c-46d5-b45b-de3402b96df2", "Compare_Bool_State", Relay_In_9)) return; 
          {
             {
-            }
-            {
-               {
-                  //if our game object reference was changed then we need to reset event listeners
-                  if ( local_3_UnityEngine_GameObject_previous != local_3_UnityEngine_GameObject || false == m_RegisteredForEvents )
-                  {
-                     //tear down old listeners
-                     
-                     local_3_UnityEngine_GameObject_previous = local_3_UnityEngine_GameObject;
-                     
-                     //setup new listeners
-                  }
-               }
-               logic_uScriptAct_AttachToGameObject_Attachment_9 = local_3_UnityEngine_GameObject;
-               
-            }
-            {
-            }
-            {
-            }
-            {
-            }
-            {
-            }
-         }
-         logic_uScriptAct_AttachToGameObject_uScriptAct_AttachToGameObject_9.In(logic_uScriptAct_AttachToGameObject_Target_9, logic_uScriptAct_AttachToGameObject_Attachment_9, logic_uScriptAct_AttachToGameObject_UseRelativeOffset_9, logic_uScriptAct_AttachToGameObject_RelativeOffset_9, logic_uScriptAct_AttachToGameObject_UseRelativeRotation_9, logic_uScriptAct_AttachToGameObject_RelativeRotation_9);
-         
-         //save off values because, if there are multiple, our relay logic could cause them to change before the next value is tested
-         
-      }
-      else
-      {
-         uScriptDebug.Log( "Possible infinite loop detected in uScript testi.uscript at Attach To GameObject.  If this is in error you can change the Maximum Node Recursion in the Preferences Panel and regenerate the script.", uScriptDebug.Type.Error);
-      }
-   }
-   
-   void Relay_In_10()
-   {
-      if ( relayCallCount++ < MaxRelayCallCount )
-      {
-         if (true == CheckDebugBreak("e7ec3327-f42c-46d5-b45b-de3402b96df2", "Compare_Bool_State", Relay_In_10)) return; 
-         {
-            {
-               logic_uScriptCon_CompareBoolState_target_10 = local_6_System_Boolean;
+               logic_uScriptCon_CompareBoolState_target_9 = local_6_System_Boolean;
                
             }
             {
             }
          }
-         logic_uScriptCon_CompareBoolState_uScriptCon_CompareBoolState_10.In(logic_uScriptCon_CompareBoolState_target_10, ref logic_uScriptCon_CompareBoolState_previousState_10);
+         logic_uScriptCon_CompareBoolState_uScriptCon_CompareBoolState_9.In(logic_uScriptCon_CompareBoolState_target_9, ref logic_uScriptCon_CompareBoolState_previousState_9);
          
          //save off values because, if there are multiple, our relay logic could cause them to change before the next value is tested
          
@@ -658,12 +796,301 @@ public class testi : uScriptLogic
       }
    }
    
+   void Relay_OnUpdate_10()
+   {
+      if (true == CheckDebugBreak("656584d9-4d1a-4dc9-b0ba-9e29f7b4b2eb", "Global_Update", Relay_OnUpdate_10)) return; 
+      Relay_In_11();
+   }
+   
+   void Relay_OnLateUpdate_10()
+   {
+      if (true == CheckDebugBreak("656584d9-4d1a-4dc9-b0ba-9e29f7b4b2eb", "Global_Update", Relay_OnLateUpdate_10)) return; 
+   }
+   
+   void Relay_OnFixedUpdate_10()
+   {
+      if (true == CheckDebugBreak("656584d9-4d1a-4dc9-b0ba-9e29f7b4b2eb", "Global_Update", Relay_OnFixedUpdate_10)) return; 
+   }
+   
+   void Relay_In_11()
+   {
+      if ( relayCallCount++ < MaxRelayCallCount )
+      {
+         if (true == CheckDebugBreak("bd7bb00a-87c1-4a32-9e79-20397d65ac1a", "Check_Distance", Relay_In_11)) return; 
+         {
+            {
+               {
+                  //if our game object reference was changed then we need to reset event listeners
+                  if ( local_pickedObj_UnityEngine_GameObject_previous != local_pickedObj_UnityEngine_GameObject || false == m_RegisteredForEvents )
+                  {
+                     //tear down old listeners
+                     if ( null != local_pickedObj_UnityEngine_GameObject_previous )
+                     {
+                        {
+                           uScript_Update component = local_pickedObj_UnityEngine_GameObject_previous.GetComponent<uScript_Update>();
+                           if ( null != component )
+                           {
+                              component.OnUpdate -= Instance_OnUpdate_10;
+                              component.OnLateUpdate -= Instance_OnLateUpdate_10;
+                              component.OnFixedUpdate -= Instance_OnFixedUpdate_10;
+                           }
+                        }
+                     }
+                     
+                     local_pickedObj_UnityEngine_GameObject_previous = local_pickedObj_UnityEngine_GameObject;
+                     
+                     //setup new listeners
+                     if ( null != local_pickedObj_UnityEngine_GameObject )
+                     {
+                        {
+                           uScript_Update component = local_pickedObj_UnityEngine_GameObject.GetComponent<uScript_Update>();
+                           if ( null == component )
+                           {
+                              component = local_pickedObj_UnityEngine_GameObject.AddComponent<uScript_Update>();
+                           }
+                           if ( null != component )
+                           {
+                              component.OnUpdate += Instance_OnUpdate_10;
+                              component.OnLateUpdate += Instance_OnLateUpdate_10;
+                              component.OnFixedUpdate += Instance_OnFixedUpdate_10;
+                           }
+                        }
+                     }
+                  }
+               }
+               logic_uScriptCon_CheckDistance_A_11 = local_pickedObj_UnityEngine_GameObject;
+               
+            }
+            {
+            }
+            {
+            }
+         }
+         logic_uScriptCon_CheckDistance_uScriptCon_CheckDistance_11.In(logic_uScriptCon_CheckDistance_A_11, logic_uScriptCon_CheckDistance_B_11, logic_uScriptCon_CheckDistance_Distance_11);
+         
+         //save off values because, if there are multiple, our relay logic could cause them to change before the next value is tested
+         bool test_0 = logic_uScriptCon_CheckDistance_uScriptCon_CheckDistance_11.Further;
+         
+         if ( test_0 == true )
+         {
+            Relay_In_13();
+         }
+      }
+      else
+      {
+         uScriptDebug.Log( "Possible infinite loop detected in uScript testi.uscript at Check Distance.  If this is in error you can change the Maximum Node Recursion in the Preferences Panel and regenerate the script.", uScriptDebug.Type.Error);
+      }
+   }
+   
+   void Relay_In_12()
+   {
+      if ( relayCallCount++ < MaxRelayCallCount )
+      {
+         if (true == CheckDebugBreak("074d1b0e-7307-41b4-9e1a-2caa0e31b1f1", "Set_GameObject", Relay_In_12)) return; 
+         {
+            {
+            }
+            {
+            }
+         }
+         logic_uScriptAct_SetGameObject_uScriptAct_SetGameObject_12.In(logic_uScriptAct_SetGameObject_Value_12, out logic_uScriptAct_SetGameObject_TargetGameObject_12);
+         local_pickedObj_UnityEngine_GameObject = logic_uScriptAct_SetGameObject_TargetGameObject_12;
+         {
+            //if our game object reference was changed then we need to reset event listeners
+            if ( local_pickedObj_UnityEngine_GameObject_previous != local_pickedObj_UnityEngine_GameObject || false == m_RegisteredForEvents )
+            {
+               //tear down old listeners
+               if ( null != local_pickedObj_UnityEngine_GameObject_previous )
+               {
+                  {
+                     uScript_Update component = local_pickedObj_UnityEngine_GameObject_previous.GetComponent<uScript_Update>();
+                     if ( null != component )
+                     {
+                        component.OnUpdate -= Instance_OnUpdate_10;
+                        component.OnLateUpdate -= Instance_OnLateUpdate_10;
+                        component.OnFixedUpdate -= Instance_OnFixedUpdate_10;
+                     }
+                  }
+               }
+               
+               local_pickedObj_UnityEngine_GameObject_previous = local_pickedObj_UnityEngine_GameObject;
+               
+               //setup new listeners
+               if ( null != local_pickedObj_UnityEngine_GameObject )
+               {
+                  {
+                     uScript_Update component = local_pickedObj_UnityEngine_GameObject.GetComponent<uScript_Update>();
+                     if ( null == component )
+                     {
+                        component = local_pickedObj_UnityEngine_GameObject.AddComponent<uScript_Update>();
+                     }
+                     if ( null != component )
+                     {
+                        component.OnUpdate += Instance_OnUpdate_10;
+                        component.OnLateUpdate += Instance_OnLateUpdate_10;
+                        component.OnFixedUpdate += Instance_OnFixedUpdate_10;
+                     }
+                  }
+               }
+            }
+         }
+         
+         //save off values because, if there are multiple, our relay logic could cause them to change before the next value is tested
+         
+      }
+      else
+      {
+         uScriptDebug.Log( "Possible infinite loop detected in uScript testi.uscript at Set GameObject.  If this is in error you can change the Maximum Node Recursion in the Preferences Panel and regenerate the script.", uScriptDebug.Type.Error);
+      }
+   }
+   
+   void Relay_In_13()
+   {
+      if ( relayCallCount++ < MaxRelayCallCount )
+      {
+         if (true == CheckDebugBreak("7f27f0b1-f221-4daf-bfa2-6714d1407298", "Set_Parent", Relay_In_13)) return; 
+         {
+            {
+               int index = 0;
+               {
+                  //if our game object reference was changed then we need to reset event listeners
+                  if ( local_pickedObj_UnityEngine_GameObject_previous != local_pickedObj_UnityEngine_GameObject || false == m_RegisteredForEvents )
+                  {
+                     //tear down old listeners
+                     if ( null != local_pickedObj_UnityEngine_GameObject_previous )
+                     {
+                        {
+                           uScript_Update component = local_pickedObj_UnityEngine_GameObject_previous.GetComponent<uScript_Update>();
+                           if ( null != component )
+                           {
+                              component.OnUpdate -= Instance_OnUpdate_10;
+                              component.OnLateUpdate -= Instance_OnLateUpdate_10;
+                              component.OnFixedUpdate -= Instance_OnFixedUpdate_10;
+                           }
+                        }
+                     }
+                     
+                     local_pickedObj_UnityEngine_GameObject_previous = local_pickedObj_UnityEngine_GameObject;
+                     
+                     //setup new listeners
+                     if ( null != local_pickedObj_UnityEngine_GameObject )
+                     {
+                        {
+                           uScript_Update component = local_pickedObj_UnityEngine_GameObject.GetComponent<uScript_Update>();
+                           if ( null == component )
+                           {
+                              component = local_pickedObj_UnityEngine_GameObject.AddComponent<uScript_Update>();
+                           }
+                           if ( null != component )
+                           {
+                              component.OnUpdate += Instance_OnUpdate_10;
+                              component.OnLateUpdate += Instance_OnLateUpdate_10;
+                              component.OnFixedUpdate += Instance_OnFixedUpdate_10;
+                           }
+                        }
+                     }
+                  }
+               }
+               if ( logic_uScriptAct_SetParent_Target_13.Length <= index)
+               {
+                  System.Array.Resize(ref logic_uScriptAct_SetParent_Target_13, index + 1);
+               }
+               logic_uScriptAct_SetParent_Target_13[ index++ ] = local_pickedObj_UnityEngine_GameObject;
+               
+            }
+            {
+            }
+         }
+         logic_uScriptAct_SetParent_uScriptAct_SetParent_13.In(logic_uScriptAct_SetParent_Target_13, logic_uScriptAct_SetParent_Parent_13);
+         
+         //save off values because, if there are multiple, our relay logic could cause them to change before the next value is tested
+         bool test_0 = logic_uScriptAct_SetParent_uScriptAct_SetParent_13.Out;
+         
+         if ( test_0 == true )
+         {
+            Relay_In_12();
+         }
+      }
+      else
+      {
+         uScriptDebug.Log( "Possible infinite loop detected in uScript testi.uscript at Set Parent.  If this is in error you can change the Maximum Node Recursion in the Preferences Panel and regenerate the script.", uScriptDebug.Type.Error);
+      }
+   }
+   
+   void Relay_In_14()
+   {
+      if ( relayCallCount++ < MaxRelayCallCount )
+      {
+         if (true == CheckDebugBreak("a0c3d562-f283-4bf4-a9dc-35365f374656", "Set_Parent", Relay_In_14)) return; 
+         {
+            {
+               int index = 0;
+               {
+                  //if our game object reference was changed then we need to reset event listeners
+                  if ( local_pickedObj_UnityEngine_GameObject_previous != local_pickedObj_UnityEngine_GameObject || false == m_RegisteredForEvents )
+                  {
+                     //tear down old listeners
+                     if ( null != local_pickedObj_UnityEngine_GameObject_previous )
+                     {
+                        {
+                           uScript_Update component = local_pickedObj_UnityEngine_GameObject_previous.GetComponent<uScript_Update>();
+                           if ( null != component )
+                           {
+                              component.OnUpdate -= Instance_OnUpdate_10;
+                              component.OnLateUpdate -= Instance_OnLateUpdate_10;
+                              component.OnFixedUpdate -= Instance_OnFixedUpdate_10;
+                           }
+                        }
+                     }
+                     
+                     local_pickedObj_UnityEngine_GameObject_previous = local_pickedObj_UnityEngine_GameObject;
+                     
+                     //setup new listeners
+                     if ( null != local_pickedObj_UnityEngine_GameObject )
+                     {
+                        {
+                           uScript_Update component = local_pickedObj_UnityEngine_GameObject.GetComponent<uScript_Update>();
+                           if ( null == component )
+                           {
+                              component = local_pickedObj_UnityEngine_GameObject.AddComponent<uScript_Update>();
+                           }
+                           if ( null != component )
+                           {
+                              component.OnUpdate += Instance_OnUpdate_10;
+                              component.OnLateUpdate += Instance_OnLateUpdate_10;
+                              component.OnFixedUpdate += Instance_OnFixedUpdate_10;
+                           }
+                        }
+                     }
+                  }
+               }
+               if ( logic_uScriptAct_SetParent_Target_14.Length <= index)
+               {
+                  System.Array.Resize(ref logic_uScriptAct_SetParent_Target_14, index + 1);
+               }
+               logic_uScriptAct_SetParent_Target_14[ index++ ] = local_pickedObj_UnityEngine_GameObject;
+               
+            }
+            {
+            }
+         }
+         logic_uScriptAct_SetParent_uScriptAct_SetParent_14.In(logic_uScriptAct_SetParent_Target_14, logic_uScriptAct_SetParent_Parent_14);
+         
+         //save off values because, if there are multiple, our relay logic could cause them to change before the next value is tested
+         
+      }
+      else
+      {
+         uScriptDebug.Log( "Possible infinite loop detected in uScript testi.uscript at Set Parent.  If this is in error you can change the Maximum Node Recursion in the Preferences Panel and regenerate the script.", uScriptDebug.Type.Error);
+      }
+   }
+   
    private void UpdateEditorValues( )
    {
-      uScript_MasterComponent.LatestMasterComponent.UpdateNodeValue( "testi.uscript:1", local_1_UnityEngine_GameObject);
-      uScript_MasterComponent.LatestMasterComponent.UpdateNodeValue( "67aaacfb-a75f-4300-bbfe-a13d80138a08", local_1_UnityEngine_GameObject);
-      uScript_MasterComponent.LatestMasterComponent.UpdateNodeValue( "testi.uscript:3", local_3_UnityEngine_GameObject);
-      uScript_MasterComponent.LatestMasterComponent.UpdateNodeValue( "609167f6-a5ac-4949-a403-1113bd11f1d5", local_3_UnityEngine_GameObject);
+      uScript_MasterComponent.LatestMasterComponent.UpdateNodeValue( "testi.uscript:collider", local_collider_UnityEngine_GameObject);
+      uScript_MasterComponent.LatestMasterComponent.UpdateNodeValue( "67aaacfb-a75f-4300-bbfe-a13d80138a08", local_collider_UnityEngine_GameObject);
+      uScript_MasterComponent.LatestMasterComponent.UpdateNodeValue( "testi.uscript:pickedObj", local_pickedObj_UnityEngine_GameObject);
+      uScript_MasterComponent.LatestMasterComponent.UpdateNodeValue( "609167f6-a5ac-4949-a403-1113bd11f1d5", local_pickedObj_UnityEngine_GameObject);
       uScript_MasterComponent.LatestMasterComponent.UpdateNodeValue( "testi.uscript:6", local_6_System_Boolean);
       uScript_MasterComponent.LatestMasterComponent.UpdateNodeValue( "84eca832-261c-41e2-9634-e2ad8791152c", local_6_System_Boolean);
    }

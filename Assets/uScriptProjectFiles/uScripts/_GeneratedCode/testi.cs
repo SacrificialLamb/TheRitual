@@ -25,11 +25,12 @@ public class testi : uScriptLogic
    //external parameters
    
    //local nodes
-   UnityEngine.GameObject local_1_UnityEngine_GameObject = default(UnityEngine.GameObject);
-   UnityEngine.GameObject local_1_UnityEngine_GameObject_previous = null;
-   UnityEngine.GameObject local_3_UnityEngine_GameObject = default(UnityEngine.GameObject);
-   UnityEngine.GameObject local_3_UnityEngine_GameObject_previous = null;
+   System.Boolean local_15_System_Boolean = (bool) false;
    System.Boolean local_6_System_Boolean = (bool) false;
+   UnityEngine.GameObject local_Picked_up_box_UnityEngine_GameObject = default(UnityEngine.GameObject);
+   UnityEngine.GameObject local_Picked_up_box_UnityEngine_GameObject_previous = null;
+   UnityEngine.GameObject local_The_box_UnityEngine_GameObject = default(UnityEngine.GameObject);
+   UnityEngine.GameObject local_The_box_UnityEngine_GameObject_previous = null;
    
    //owner nodes
    
@@ -78,6 +79,20 @@ public class testi : uScriptLogic
    bool logic_uScriptCon_CompareBoolState_IsFalse_10 = true;
    bool logic_uScriptCon_CompareBoolState_WasTrue_10 = true;
    bool logic_uScriptCon_CompareBoolState_WasFalse_10 = true;
+   //pointer to script instanced logic node
+   uScriptAct_DetachChildren logic_uScriptAct_DetachChildren_uScriptAct_DetachChildren_13 = new uScriptAct_DetachChildren( );
+   UnityEngine.GameObject[] logic_uScriptAct_DetachChildren_Target_13 = new UnityEngine.GameObject[] {null};
+   bool logic_uScriptAct_DetachChildren_Out_13 = true;
+   //pointer to script instanced logic node
+   uScriptCon_IsNull logic_uScriptCon_IsNull_uScriptCon_IsNull_14 = new uScriptCon_IsNull( );
+   UnityEngine.GameObject[] logic_uScriptCon_IsNull_Target_14 = new UnityEngine.GameObject[] {};
+   bool logic_uScriptCon_IsNull_IsNull_14 = true;
+   bool logic_uScriptCon_IsNull_IsNotNull_14 = true;
+   //pointer to script instanced logic node
+   uScriptAct_SetGameObject logic_uScriptAct_SetGameObject_uScriptAct_SetGameObject_39 = new uScriptAct_SetGameObject( );
+   UnityEngine.GameObject logic_uScriptAct_SetGameObject_Value_39 = default(UnityEngine.GameObject);
+   UnityEngine.GameObject logic_uScriptAct_SetGameObject_TargetGameObject_39;
+   bool logic_uScriptAct_SetGameObject_Out_39 = true;
    
    //event nodes
    UnityEngine.Vector3 event_UnityEngine_GameObject_RelativeVelocity_0 = new Vector3( (float)0, (float)0, (float)0 );
@@ -103,6 +118,8 @@ public class testi : uScriptLogic
    //property nodes
    
    //method nodes
+   System.String method_Detox_ScriptEditor_Plug_UnityEngine_GameObject_methodName_11 = "EnableKinematic";
+   System.String method_Detox_ScriptEditor_Plug_UnityEngine_GameObject_methodName_12 = "DisableKinematic";
    #pragma warning restore 414
    
    //functions to refresh properties from entities
@@ -112,23 +129,31 @@ public class testi : uScriptLogic
       SyncEventListeners( );
       if ( null == logic_uScriptAct_AttachToGameObject_Target_9 || false == m_RegisteredForEvents )
       {
-         logic_uScriptAct_AttachToGameObject_Target_9 = GameObject.Find( "/ThirdPersonController" ) as UnityEngine.GameObject;
+         logic_uScriptAct_AttachToGameObject_Target_9 = GameObject.Find( "/ThirdPersonController/Carry" ) as UnityEngine.GameObject;
+      }
+      if ( null == logic_uScriptAct_DetachChildren_Target_13[0] || false == m_RegisteredForEvents )
+      {
+         logic_uScriptAct_DetachChildren_Target_13[0] = GameObject.Find( "/ThirdPersonController/Carry" ) as UnityEngine.GameObject;
+      }
+      if ( null == logic_uScriptAct_SetGameObject_Value_39 || false == m_RegisteredForEvents )
+      {
+         logic_uScriptAct_SetGameObject_Value_39 = GameObject.Find( "null" ) as UnityEngine.GameObject;
       }
       //if our game object reference was changed then we need to reset event listeners
-      if ( local_1_UnityEngine_GameObject_previous != local_1_UnityEngine_GameObject || false == m_RegisteredForEvents )
+      if ( local_The_box_UnityEngine_GameObject_previous != local_The_box_UnityEngine_GameObject || false == m_RegisteredForEvents )
       {
          //tear down old listeners
          
-         local_1_UnityEngine_GameObject_previous = local_1_UnityEngine_GameObject;
+         local_The_box_UnityEngine_GameObject_previous = local_The_box_UnityEngine_GameObject;
          
          //setup new listeners
       }
       //if our game object reference was changed then we need to reset event listeners
-      if ( local_3_UnityEngine_GameObject_previous != local_3_UnityEngine_GameObject || false == m_RegisteredForEvents )
+      if ( local_Picked_up_box_UnityEngine_GameObject_previous != local_Picked_up_box_UnityEngine_GameObject || false == m_RegisteredForEvents )
       {
          //tear down old listeners
          
-         local_3_UnityEngine_GameObject_previous = local_3_UnityEngine_GameObject;
+         local_Picked_up_box_UnityEngine_GameObject_previous = local_Picked_up_box_UnityEngine_GameObject;
          
          //setup new listeners
       }
@@ -138,20 +163,20 @@ public class testi : uScriptLogic
    {
       SyncEventListeners( );
       //if our game object reference was changed then we need to reset event listeners
-      if ( local_1_UnityEngine_GameObject_previous != local_1_UnityEngine_GameObject || false == m_RegisteredForEvents )
+      if ( local_The_box_UnityEngine_GameObject_previous != local_The_box_UnityEngine_GameObject || false == m_RegisteredForEvents )
       {
          //tear down old listeners
          
-         local_1_UnityEngine_GameObject_previous = local_1_UnityEngine_GameObject;
+         local_The_box_UnityEngine_GameObject_previous = local_The_box_UnityEngine_GameObject;
          
          //setup new listeners
       }
       //if our game object reference was changed then we need to reset event listeners
-      if ( local_3_UnityEngine_GameObject_previous != local_3_UnityEngine_GameObject || false == m_RegisteredForEvents )
+      if ( local_Picked_up_box_UnityEngine_GameObject_previous != local_Picked_up_box_UnityEngine_GameObject || false == m_RegisteredForEvents )
       {
          //tear down old listeners
          
-         local_3_UnityEngine_GameObject_previous = local_3_UnityEngine_GameObject;
+         local_Picked_up_box_UnityEngine_GameObject_previous = local_Picked_up_box_UnityEngine_GameObject;
          
          //setup new listeners
       }
@@ -235,6 +260,9 @@ public class testi : uScriptLogic
       logic_uScriptAct_SetGameObject_uScriptAct_SetGameObject_8.SetParent(g);
       logic_uScriptAct_AttachToGameObject_uScriptAct_AttachToGameObject_9.SetParent(g);
       logic_uScriptCon_CompareBoolState_uScriptCon_CompareBoolState_10.SetParent(g);
+      logic_uScriptAct_DetachChildren_uScriptAct_DetachChildren_13.SetParent(g);
+      logic_uScriptCon_IsNull_uScriptCon_IsNull_14.SetParent(g);
+      logic_uScriptAct_SetGameObject_uScriptAct_SetGameObject_39.SetParent(g);
    }
    public void Awake()
    {
@@ -366,14 +394,14 @@ public class testi : uScriptLogic
    void Relay_OnEnterCollision_0()
    {
       if (true == CheckDebugBreak("7e541fea-1cf4-4bc0-9867-93f7096f374c", "On_Collision", Relay_OnEnterCollision_0)) return; 
-      local_1_UnityEngine_GameObject = event_UnityEngine_GameObject_GameObject_0;
+      local_The_box_UnityEngine_GameObject = event_UnityEngine_GameObject_GameObject_0;
       {
          //if our game object reference was changed then we need to reset event listeners
-         if ( local_1_UnityEngine_GameObject_previous != local_1_UnityEngine_GameObject || false == m_RegisteredForEvents )
+         if ( local_The_box_UnityEngine_GameObject_previous != local_The_box_UnityEngine_GameObject || false == m_RegisteredForEvents )
          {
             //tear down old listeners
             
-            local_1_UnityEngine_GameObject_previous = local_1_UnityEngine_GameObject;
+            local_The_box_UnityEngine_GameObject_previous = local_The_box_UnityEngine_GameObject;
             
             //setup new listeners
          }
@@ -383,14 +411,14 @@ public class testi : uScriptLogic
    void Relay_OnExitCollision_0()
    {
       if (true == CheckDebugBreak("7e541fea-1cf4-4bc0-9867-93f7096f374c", "On_Collision", Relay_OnExitCollision_0)) return; 
-      local_1_UnityEngine_GameObject = event_UnityEngine_GameObject_GameObject_0;
+      local_The_box_UnityEngine_GameObject = event_UnityEngine_GameObject_GameObject_0;
       {
          //if our game object reference was changed then we need to reset event listeners
-         if ( local_1_UnityEngine_GameObject_previous != local_1_UnityEngine_GameObject || false == m_RegisteredForEvents )
+         if ( local_The_box_UnityEngine_GameObject_previous != local_The_box_UnityEngine_GameObject || false == m_RegisteredForEvents )
          {
             //tear down old listeners
             
-            local_1_UnityEngine_GameObject_previous = local_1_UnityEngine_GameObject;
+            local_The_box_UnityEngine_GameObject_previous = local_The_box_UnityEngine_GameObject;
             
             //setup new listeners
          }
@@ -400,14 +428,14 @@ public class testi : uScriptLogic
    void Relay_WhileInsideCollision_0()
    {
       if (true == CheckDebugBreak("7e541fea-1cf4-4bc0-9867-93f7096f374c", "On_Collision", Relay_WhileInsideCollision_0)) return; 
-      local_1_UnityEngine_GameObject = event_UnityEngine_GameObject_GameObject_0;
+      local_The_box_UnityEngine_GameObject = event_UnityEngine_GameObject_GameObject_0;
       {
          //if our game object reference was changed then we need to reset event listeners
-         if ( local_1_UnityEngine_GameObject_previous != local_1_UnityEngine_GameObject || false == m_RegisteredForEvents )
+         if ( local_The_box_UnityEngine_GameObject_previous != local_The_box_UnityEngine_GameObject || false == m_RegisteredForEvents )
          {
             //tear down old listeners
             
-            local_1_UnityEngine_GameObject_previous = local_1_UnityEngine_GameObject;
+            local_The_box_UnityEngine_GameObject_previous = local_The_box_UnityEngine_GameObject;
             
             //setup new listeners
          }
@@ -424,16 +452,16 @@ public class testi : uScriptLogic
             {
                {
                   //if our game object reference was changed then we need to reset event listeners
-                  if ( local_1_UnityEngine_GameObject_previous != local_1_UnityEngine_GameObject || false == m_RegisteredForEvents )
+                  if ( local_The_box_UnityEngine_GameObject_previous != local_The_box_UnityEngine_GameObject || false == m_RegisteredForEvents )
                   {
                      //tear down old listeners
                      
-                     local_1_UnityEngine_GameObject_previous = local_1_UnityEngine_GameObject;
+                     local_The_box_UnityEngine_GameObject_previous = local_The_box_UnityEngine_GameObject;
                      
                      //setup new listeners
                   }
                }
-               logic_uScriptCon_GameObjectHasTag_GameObject_2 = local_1_UnityEngine_GameObject;
+               logic_uScriptCon_GameObjectHasTag_GameObject_2 = local_The_box_UnityEngine_GameObject;
                
             }
             {
@@ -465,11 +493,11 @@ public class testi : uScriptLogic
                int index = 0;
                {
                   //if our game object reference was changed then we need to reset event listeners
-                  if ( local_3_UnityEngine_GameObject_previous != local_3_UnityEngine_GameObject || false == m_RegisteredForEvents )
+                  if ( local_Picked_up_box_UnityEngine_GameObject_previous != local_Picked_up_box_UnityEngine_GameObject || false == m_RegisteredForEvents )
                   {
                      //tear down old listeners
                      
-                     local_3_UnityEngine_GameObject_previous = local_3_UnityEngine_GameObject;
+                     local_Picked_up_box_UnityEngine_GameObject_previous = local_Picked_up_box_UnityEngine_GameObject;
                      
                      //setup new listeners
                   }
@@ -478,7 +506,7 @@ public class testi : uScriptLogic
                {
                   System.Array.Resize(ref logic_uScriptCon_IsNull_Target_4, index + 1);
                }
-               logic_uScriptCon_IsNull_Target_4[ index++ ] = local_3_UnityEngine_GameObject;
+               logic_uScriptCon_IsNull_Target_4[ index++ ] = local_Picked_up_box_UnityEngine_GameObject;
                
             }
          }
@@ -486,15 +514,10 @@ public class testi : uScriptLogic
          
          //save off values because, if there are multiple, our relay logic could cause them to change before the next value is tested
          bool test_0 = logic_uScriptCon_IsNull_uScriptCon_IsNull_4.IsNull;
-         bool test_1 = logic_uScriptCon_IsNull_uScriptCon_IsNull_4.IsNotNull;
          
          if ( test_0 == true )
          {
             Relay_In_7();
-         }
-         if ( test_1 == true )
-         {
-            Relay_In_10();
          }
       }
       else
@@ -507,7 +530,9 @@ public class testi : uScriptLogic
    {
       if (true == CheckDebugBreak("d655103f-3d0d-475d-823d-f5615398399c", "Managed_Input_Events", Relay_OnInputEvent_5)) return; 
       local_6_System_Boolean = event_UnityEngine_GameObject_Fire1_5;
+      local_15_System_Boolean = event_UnityEngine_GameObject_Fire2_5;
       Relay_In_4();
+      Relay_In_14();
    }
    
    void Relay_In_7()
@@ -548,30 +573,30 @@ public class testi : uScriptLogic
             {
                {
                   //if our game object reference was changed then we need to reset event listeners
-                  if ( local_1_UnityEngine_GameObject_previous != local_1_UnityEngine_GameObject || false == m_RegisteredForEvents )
+                  if ( local_The_box_UnityEngine_GameObject_previous != local_The_box_UnityEngine_GameObject || false == m_RegisteredForEvents )
                   {
                      //tear down old listeners
                      
-                     local_1_UnityEngine_GameObject_previous = local_1_UnityEngine_GameObject;
+                     local_The_box_UnityEngine_GameObject_previous = local_The_box_UnityEngine_GameObject;
                      
                      //setup new listeners
                   }
                }
-               logic_uScriptAct_SetGameObject_Value_8 = local_1_UnityEngine_GameObject;
+               logic_uScriptAct_SetGameObject_Value_8 = local_The_box_UnityEngine_GameObject;
                
             }
             {
             }
          }
          logic_uScriptAct_SetGameObject_uScriptAct_SetGameObject_8.In(logic_uScriptAct_SetGameObject_Value_8, out logic_uScriptAct_SetGameObject_TargetGameObject_8);
-         local_3_UnityEngine_GameObject = logic_uScriptAct_SetGameObject_TargetGameObject_8;
+         local_Picked_up_box_UnityEngine_GameObject = logic_uScriptAct_SetGameObject_TargetGameObject_8;
          {
             //if our game object reference was changed then we need to reset event listeners
-            if ( local_3_UnityEngine_GameObject_previous != local_3_UnityEngine_GameObject || false == m_RegisteredForEvents )
+            if ( local_Picked_up_box_UnityEngine_GameObject_previous != local_Picked_up_box_UnityEngine_GameObject || false == m_RegisteredForEvents )
             {
                //tear down old listeners
                
-               local_3_UnityEngine_GameObject_previous = local_3_UnityEngine_GameObject;
+               local_Picked_up_box_UnityEngine_GameObject_previous = local_Picked_up_box_UnityEngine_GameObject;
                
                //setup new listeners
             }
@@ -602,16 +627,16 @@ public class testi : uScriptLogic
             {
                {
                   //if our game object reference was changed then we need to reset event listeners
-                  if ( local_3_UnityEngine_GameObject_previous != local_3_UnityEngine_GameObject || false == m_RegisteredForEvents )
+                  if ( local_Picked_up_box_UnityEngine_GameObject_previous != local_Picked_up_box_UnityEngine_GameObject || false == m_RegisteredForEvents )
                   {
                      //tear down old listeners
                      
-                     local_3_UnityEngine_GameObject_previous = local_3_UnityEngine_GameObject;
+                     local_Picked_up_box_UnityEngine_GameObject_previous = local_Picked_up_box_UnityEngine_GameObject;
                      
                      //setup new listeners
                   }
                }
-               logic_uScriptAct_AttachToGameObject_Attachment_9 = local_3_UnityEngine_GameObject;
+               logic_uScriptAct_AttachToGameObject_Attachment_9 = local_Picked_up_box_UnityEngine_GameObject;
                
             }
             {
@@ -626,7 +651,12 @@ public class testi : uScriptLogic
          logic_uScriptAct_AttachToGameObject_uScriptAct_AttachToGameObject_9.In(logic_uScriptAct_AttachToGameObject_Target_9, logic_uScriptAct_AttachToGameObject_Attachment_9, logic_uScriptAct_AttachToGameObject_UseRelativeOffset_9, logic_uScriptAct_AttachToGameObject_RelativeOffset_9, logic_uScriptAct_AttachToGameObject_UseRelativeRotation_9, logic_uScriptAct_AttachToGameObject_RelativeRotation_9);
          
          //save off values because, if there are multiple, our relay logic could cause them to change before the next value is tested
+         bool test_0 = logic_uScriptAct_AttachToGameObject_uScriptAct_AttachToGameObject_9.Out;
          
+         if ( test_0 == true )
+         {
+            Relay_SendMessage_11();
+         }
       }
       else
       {
@@ -641,7 +671,7 @@ public class testi : uScriptLogic
          if (true == CheckDebugBreak("e7ec3327-f42c-46d5-b45b-de3402b96df2", "Compare_Bool_State", Relay_In_10)) return; 
          {
             {
-               logic_uScriptCon_CompareBoolState_target_10 = local_6_System_Boolean;
+               logic_uScriptCon_CompareBoolState_target_10 = local_15_System_Boolean;
                
             }
             {
@@ -650,7 +680,12 @@ public class testi : uScriptLogic
          logic_uScriptCon_CompareBoolState_uScriptCon_CompareBoolState_10.In(logic_uScriptCon_CompareBoolState_target_10, ref logic_uScriptCon_CompareBoolState_previousState_10);
          
          //save off values because, if there are multiple, our relay logic could cause them to change before the next value is tested
+         bool test_0 = logic_uScriptCon_CompareBoolState_uScriptCon_CompareBoolState_10.IsTrue;
          
+         if ( test_0 == true )
+         {
+            Relay_SendMessage_12();
+         }
       }
       else
       {
@@ -658,14 +693,167 @@ public class testi : uScriptLogic
       }
    }
    
+   void Relay_SendMessage_11()
+   {
+      if ( relayCallCount++ < MaxRelayCallCount )
+      {
+         if (true == CheckDebugBreak("89d28bd1-df33-468f-98c3-3cd57a668b2f", "UnityEngine_Transform", Relay_SendMessage_11)) return; 
+         {
+            {
+            }
+         }
+         {
+            UnityEngine.Transform component;
+            component = local_Picked_up_box_UnityEngine_GameObject.GetComponent<UnityEngine.Transform>();
+            if ( null != component )
+            {
+               component.SendMessage(method_Detox_ScriptEditor_Plug_UnityEngine_GameObject_methodName_11);
+            }
+         }
+      }
+      else
+      {
+         uScriptDebug.Log( "Possible infinite loop detected in uScript testi.uscript at UnityEngine.Transform.  If this is in error you can change the Maximum Node Recursion in the Preferences Panel and regenerate the script.", uScriptDebug.Type.Error);
+      }
+   }
+   
+   void Relay_SendMessage_12()
+   {
+      if ( relayCallCount++ < MaxRelayCallCount )
+      {
+         if (true == CheckDebugBreak("7576a496-e35a-47d0-b5a2-7aba642e07c1", "UnityEngine_Transform", Relay_SendMessage_12)) return; 
+         {
+            {
+            }
+         }
+         {
+            UnityEngine.Transform component;
+            component = local_Picked_up_box_UnityEngine_GameObject.GetComponent<UnityEngine.Transform>();
+            if ( null != component )
+            {
+               component.SendMessage(method_Detox_ScriptEditor_Plug_UnityEngine_GameObject_methodName_12);
+            }
+         }
+         Relay_In_39();
+      }
+      else
+      {
+         uScriptDebug.Log( "Possible infinite loop detected in uScript testi.uscript at UnityEngine.Transform.  If this is in error you can change the Maximum Node Recursion in the Preferences Panel and regenerate the script.", uScriptDebug.Type.Error);
+      }
+   }
+   
+   void Relay_In_13()
+   {
+      if ( relayCallCount++ < MaxRelayCallCount )
+      {
+         if (true == CheckDebugBreak("254fe773-67fd-4324-91b7-b429245a957a", "Detach_Children", Relay_In_13)) return; 
+         {
+            {
+            }
+         }
+         logic_uScriptAct_DetachChildren_uScriptAct_DetachChildren_13.In(logic_uScriptAct_DetachChildren_Target_13);
+         
+         //save off values because, if there are multiple, our relay logic could cause them to change before the next value is tested
+         
+      }
+      else
+      {
+         uScriptDebug.Log( "Possible infinite loop detected in uScript testi.uscript at Detach Children.  If this is in error you can change the Maximum Node Recursion in the Preferences Panel and regenerate the script.", uScriptDebug.Type.Error);
+      }
+   }
+   
+   void Relay_In_14()
+   {
+      if ( relayCallCount++ < MaxRelayCallCount )
+      {
+         if (true == CheckDebugBreak("59a43f73-7973-410b-b1f1-3dcfa6db1bbd", "Is_GameObject_Null", Relay_In_14)) return; 
+         {
+            {
+               int index = 0;
+               {
+                  //if our game object reference was changed then we need to reset event listeners
+                  if ( local_Picked_up_box_UnityEngine_GameObject_previous != local_Picked_up_box_UnityEngine_GameObject || false == m_RegisteredForEvents )
+                  {
+                     //tear down old listeners
+                     
+                     local_Picked_up_box_UnityEngine_GameObject_previous = local_Picked_up_box_UnityEngine_GameObject;
+                     
+                     //setup new listeners
+                  }
+               }
+               if ( logic_uScriptCon_IsNull_Target_14.Length <= index)
+               {
+                  System.Array.Resize(ref logic_uScriptCon_IsNull_Target_14, index + 1);
+               }
+               logic_uScriptCon_IsNull_Target_14[ index++ ] = local_Picked_up_box_UnityEngine_GameObject;
+               
+            }
+         }
+         logic_uScriptCon_IsNull_uScriptCon_IsNull_14.In(logic_uScriptCon_IsNull_Target_14);
+         
+         //save off values because, if there are multiple, our relay logic could cause them to change before the next value is tested
+         bool test_0 = logic_uScriptCon_IsNull_uScriptCon_IsNull_14.IsNotNull;
+         
+         if ( test_0 == true )
+         {
+            Relay_In_10();
+         }
+      }
+      else
+      {
+         uScriptDebug.Log( "Possible infinite loop detected in uScript testi.uscript at Is GameObject Null.  If this is in error you can change the Maximum Node Recursion in the Preferences Panel and regenerate the script.", uScriptDebug.Type.Error);
+      }
+   }
+   
+   void Relay_In_39()
+   {
+      if ( relayCallCount++ < MaxRelayCallCount )
+      {
+         if (true == CheckDebugBreak("6b66711f-85e4-41de-a807-0bea080e9614", "Set_GameObject", Relay_In_39)) return; 
+         {
+            {
+            }
+            {
+            }
+         }
+         logic_uScriptAct_SetGameObject_uScriptAct_SetGameObject_39.In(logic_uScriptAct_SetGameObject_Value_39, out logic_uScriptAct_SetGameObject_TargetGameObject_39);
+         local_Picked_up_box_UnityEngine_GameObject = logic_uScriptAct_SetGameObject_TargetGameObject_39;
+         {
+            //if our game object reference was changed then we need to reset event listeners
+            if ( local_Picked_up_box_UnityEngine_GameObject_previous != local_Picked_up_box_UnityEngine_GameObject || false == m_RegisteredForEvents )
+            {
+               //tear down old listeners
+               
+               local_Picked_up_box_UnityEngine_GameObject_previous = local_Picked_up_box_UnityEngine_GameObject;
+               
+               //setup new listeners
+            }
+         }
+         
+         //save off values because, if there are multiple, our relay logic could cause them to change before the next value is tested
+         bool test_0 = logic_uScriptAct_SetGameObject_uScriptAct_SetGameObject_39.Out;
+         
+         if ( test_0 == true )
+         {
+            Relay_In_13();
+         }
+      }
+      else
+      {
+         uScriptDebug.Log( "Possible infinite loop detected in uScript testi.uscript at Set GameObject.  If this is in error you can change the Maximum Node Recursion in the Preferences Panel and regenerate the script.", uScriptDebug.Type.Error);
+      }
+   }
+   
    private void UpdateEditorValues( )
    {
-      uScript_MasterComponent.LatestMasterComponent.UpdateNodeValue( "testi.uscript:1", local_1_UnityEngine_GameObject);
-      uScript_MasterComponent.LatestMasterComponent.UpdateNodeValue( "67aaacfb-a75f-4300-bbfe-a13d80138a08", local_1_UnityEngine_GameObject);
-      uScript_MasterComponent.LatestMasterComponent.UpdateNodeValue( "testi.uscript:3", local_3_UnityEngine_GameObject);
-      uScript_MasterComponent.LatestMasterComponent.UpdateNodeValue( "609167f6-a5ac-4949-a403-1113bd11f1d5", local_3_UnityEngine_GameObject);
+      uScript_MasterComponent.LatestMasterComponent.UpdateNodeValue( "testi.uscript:The box", local_The_box_UnityEngine_GameObject);
+      uScript_MasterComponent.LatestMasterComponent.UpdateNodeValue( "67aaacfb-a75f-4300-bbfe-a13d80138a08", local_The_box_UnityEngine_GameObject);
+      uScript_MasterComponent.LatestMasterComponent.UpdateNodeValue( "testi.uscript:Picked up box", local_Picked_up_box_UnityEngine_GameObject);
+      uScript_MasterComponent.LatestMasterComponent.UpdateNodeValue( "609167f6-a5ac-4949-a403-1113bd11f1d5", local_Picked_up_box_UnityEngine_GameObject);
       uScript_MasterComponent.LatestMasterComponent.UpdateNodeValue( "testi.uscript:6", local_6_System_Boolean);
       uScript_MasterComponent.LatestMasterComponent.UpdateNodeValue( "84eca832-261c-41e2-9634-e2ad8791152c", local_6_System_Boolean);
+      uScript_MasterComponent.LatestMasterComponent.UpdateNodeValue( "testi.uscript:15", local_15_System_Boolean);
+      uScript_MasterComponent.LatestMasterComponent.UpdateNodeValue( "b34e39d4-3289-4fe1-bb13-83b8a37ba4ae", local_15_System_Boolean);
    }
    bool CheckDebugBreak(string guid, string name, ContinueExecution method)
    {

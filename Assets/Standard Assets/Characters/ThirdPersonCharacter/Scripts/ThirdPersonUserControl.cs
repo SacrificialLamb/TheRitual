@@ -8,10 +8,11 @@ namespace UnityStandardAssets.Characters.ThirdPerson
     public class ThirdPersonUserControl : MonoBehaviour
     {
         private ThirdPersonCharacter m_Character; // A reference to the ThirdPersonCharacter on the object
-        private Transform m_Cam;                  // A reference to the main camera in the scenes transform
+        private Camera m_Cam;                  // A reference to the main camera in the scenes transform
         private Vector3 m_CamForward;             // The current forward direction of the camera
         private Vector3 m_Move;
         private bool m_Jump;                      // the world-relative desired move direction, calculated from the camForward and user input.
+        private bool camBack;
 
         
         private void Start()
@@ -19,7 +20,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             // get the transform of the main camera
             if (Camera.main != null)
             {
-                m_Cam = Camera.main.transform;
+                m_Cam = Camera.main;
             }
             else
             {
@@ -30,6 +31,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
             // get the third person character ( this should never be null due to require component )
             m_Character = GetComponent<ThirdPersonCharacter>();
+            camBack = false;
         }
 
 
@@ -50,12 +52,32 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             float v = CrossPlatformInputManager.GetAxis("Vertical");
             bool crouch = Input.GetKey(KeyCode.C);
 
+            if(v < 0)
+            {
+                if(!camBack)
+                {
+                    camBack = true;
+                    transform.Rotate(0, 180, 0);
+                }
+                else
+                {
+                    v = -v;
+                }
+            } else if(v > 0)
+            {
+                if(camBack)
+                {
+                    camBack = false;
+                    transform.Rotate(0, 180, 0);
+                }
+            }
+
             // calculate move direction to pass to character
             if (m_Cam != null)
             {
                 // calculate camera relative direction to move:
-                m_CamForward = Vector3.Scale(m_Cam.forward, new Vector3(1, 0, 1)).normalized;
-                m_Move = v*m_CamForward + h*m_Cam.right;
+                m_CamForward = Vector3.Scale(transform.forward, new Vector3(1, 0, 1)).normalized;
+                m_Move = v*m_CamForward + h*transform.right;
             }
             else
             {
@@ -70,6 +92,16 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             // pass all parameters to the character control script
             m_Character.Move(m_Move, crouch, m_Jump);
             m_Jump = false;
+            Vector3 camDir;
+            if (camBack)
+            {
+                camDir = new Vector3(2, 0, 2);
+            }
+            else {
+                camDir = new Vector3(-2, 0, -2);
+            }
+            m_Cam.transform.position = transform.position + Vector3.Scale(transform.forward.normalized, camDir) + new Vector3(0, 2, 0);
+            m_Cam.transform.LookAt(transform.position + new Vector3(0, 1, 0), Vector3.up);
         }
     }
 }

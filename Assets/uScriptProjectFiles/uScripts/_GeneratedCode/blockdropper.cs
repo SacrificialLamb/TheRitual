@@ -27,6 +27,8 @@ public class blockdropper : uScriptLogic
    //local nodes
    public System.Int32 amount = (int) 0;
    public System.Int32 amount2 = (int) 0;
+   public UnityEngine.GameObject ForceField = default(UnityEngine.GameObject);
+   UnityEngine.GameObject ForceField_previous = null;
    UnityEngine.GameObject local_10_UnityEngine_GameObject = default(UnityEngine.GameObject);
    UnityEngine.GameObject local_10_UnityEngine_GameObject_previous = null;
    System.String local_11_System_String = "PointCube";
@@ -83,6 +85,13 @@ public class blockdropper : uScriptLogic
    System.Int32 logic_uScriptAct_SetInt_Value_14 = (int) 0;
    System.Int32 logic_uScriptAct_SetInt_Target_14;
    bool logic_uScriptAct_SetInt_Out_14 = true;
+   //pointer to script instanced logic node
+   uScriptAct_Destroy logic_uScriptAct_Destroy_uScriptAct_Destroy_15 = new uScriptAct_Destroy( );
+   UnityEngine.GameObject[] logic_uScriptAct_Destroy_Target_15 = new UnityEngine.GameObject[] {};
+   System.Single logic_uScriptAct_Destroy_DelayTime_15 = (float) 0;
+   bool logic_uScriptAct_Destroy_Out_15 = true;
+   bool logic_uScriptAct_Destroy_ObjectsDestroyed_15 = true;
+   bool logic_uScriptAct_Destroy_WaitOneTick_15 = false;
    
    //event nodes
    UnityEngine.GameObject event_UnityEngine_GameObject_GameObject_0 = default(UnityEngine.GameObject);
@@ -149,6 +158,15 @@ public class blockdropper : uScriptLogic
             }
          }
       }
+      //if our game object reference was changed then we need to reset event listeners
+      if ( ForceField_previous != ForceField || false == m_RegisteredForEvents )
+      {
+         //tear down old listeners
+         
+         ForceField_previous = ForceField;
+         
+         //setup new listeners
+      }
    }
    
    void RegisterForUnityHooks( )
@@ -199,6 +217,15 @@ public class blockdropper : uScriptLogic
                }
             }
          }
+      }
+      //if our game object reference was changed then we need to reset event listeners
+      if ( ForceField_previous != ForceField || false == m_RegisteredForEvents )
+      {
+         //tear down old listeners
+         
+         ForceField_previous = ForceField;
+         
+         //setup new listeners
       }
    }
    
@@ -295,6 +322,7 @@ public class blockdropper : uScriptLogic
       logic_uScriptAct_Log_uScriptAct_Log_9.SetParent(g);
       logic_uScriptAct_Destroy_uScriptAct_Destroy_13.SetParent(g);
       logic_uScriptAct_SetInt_uScriptAct_SetInt_14.SetParent(g);
+      logic_uScriptAct_Destroy_uScriptAct_Destroy_15.SetParent(g);
    }
    public void Awake()
    {
@@ -343,6 +371,10 @@ public class blockdropper : uScriptLogic
       if (true == logic_uScriptAct_Destroy_WaitOneTick_13)
       {
          Relay_WaitOneTick_13();
+      }
+      if (true == logic_uScriptAct_Destroy_WaitOneTick_15)
+      {
+         Relay_WaitOneTick_15();
       }
    }
    
@@ -675,7 +707,12 @@ public class blockdropper : uScriptLogic
          logic_uScriptAct_Log_uScriptAct_Log_9.In(logic_uScriptAct_Log_Prefix_9, logic_uScriptAct_Log_Target_9, logic_uScriptAct_Log_Postfix_9);
          
          //save off values because, if there are multiple, our relay logic could cause them to change before the next value is tested
+         bool test_0 = logic_uScriptAct_Log_uScriptAct_Log_9.Out;
          
+         if ( test_0 == true )
+         {
+            Relay_In_15();
+         }
       }
       else
       {
@@ -785,6 +822,85 @@ public class blockdropper : uScriptLogic
       }
    }
    
+   void Relay_In_15()
+   {
+      if ( relayCallCount++ < MaxRelayCallCount )
+      {
+         if (true == CheckDebugBreak("58312eba-6ebd-496e-ae34-85dbb2dff2a7", "Destroy", Relay_In_15)) return; 
+         {
+            {
+               int index = 0;
+               {
+                  //if our game object reference was changed then we need to reset event listeners
+                  if ( ForceField_previous != ForceField || false == m_RegisteredForEvents )
+                  {
+                     //tear down old listeners
+                     
+                     ForceField_previous = ForceField;
+                     
+                     //setup new listeners
+                  }
+               }
+               if ( logic_uScriptAct_Destroy_Target_15.Length <= index)
+               {
+                  System.Array.Resize(ref logic_uScriptAct_Destroy_Target_15, index + 1);
+               }
+               logic_uScriptAct_Destroy_Target_15[ index++ ] = ForceField;
+               
+            }
+            {
+            }
+         }
+         logic_uScriptAct_Destroy_uScriptAct_Destroy_15.In(logic_uScriptAct_Destroy_Target_15, logic_uScriptAct_Destroy_DelayTime_15);
+         logic_uScriptAct_Destroy_WaitOneTick_15 = true;
+         
+         //save off values because, if there are multiple, our relay logic could cause them to change before the next value is tested
+         
+      }
+      else
+      {
+         uScriptDebug.Log( "Possible infinite loop detected in uScript blockdropper.uscript at Destroy.  If this is in error you can change the Maximum Node Recursion in the Preferences Panel and regenerate the script.", uScriptDebug.Type.Error);
+      }
+   }
+   
+   void Relay_WaitOneTick_15( )
+   {
+      if ( relayCallCount++ < MaxRelayCallCount )
+      {
+         {
+            {
+               int index = 0;
+               {
+                  //if our game object reference was changed then we need to reset event listeners
+                  if ( ForceField_previous != ForceField || false == m_RegisteredForEvents )
+                  {
+                     //tear down old listeners
+                     
+                     ForceField_previous = ForceField;
+                     
+                     //setup new listeners
+                  }
+               }
+               if ( logic_uScriptAct_Destroy_Target_15.Length <= index)
+               {
+                  System.Array.Resize(ref logic_uScriptAct_Destroy_Target_15, index + 1);
+               }
+               logic_uScriptAct_Destroy_Target_15[ index++ ] = ForceField;
+               
+            }
+            {
+            }
+         }
+         logic_uScriptAct_Destroy_WaitOneTick_15 = logic_uScriptAct_Destroy_uScriptAct_Destroy_15.WaitOneTick();
+         if ( true == logic_uScriptAct_Destroy_WaitOneTick_15 )
+         {
+         }
+      }
+      else
+      {
+         uScriptDebug.Log( "Possible infinite loop detected in uScript blockdropper.uscript at Destroy.  If this is in error you can change the Maximum Node Recursion in the Preferences Panel and regenerate the script.", uScriptDebug.Type.Error);
+      }
+   }
    private void UpdateEditorValues( )
    {
       uScript_MasterComponent.LatestMasterComponent.UpdateNodeValue( "blockdropper.uscript:2", local_2_UnityEngine_GameObject);
@@ -797,6 +913,8 @@ public class blockdropper : uScriptLogic
       uScript_MasterComponent.LatestMasterComponent.UpdateNodeValue( "86af6f67-678f-443b-9ad5-3c4db02bad72", local_11_System_String);
       uScript_MasterComponent.LatestMasterComponent.UpdateNodeValue( "blockdropper.uscript:amount2", amount2);
       uScript_MasterComponent.LatestMasterComponent.UpdateNodeValue( "613da578-106d-46de-a2b6-f123ca0b9e25", amount2);
+      uScript_MasterComponent.LatestMasterComponent.UpdateNodeValue( "blockdropper.uscript:ForceField", ForceField);
+      uScript_MasterComponent.LatestMasterComponent.UpdateNodeValue( "8a7c0b6f-2104-485e-8f32-ad6c2a7f0870", ForceField);
    }
    bool CheckDebugBreak(string guid, string name, ContinueExecution method)
    {

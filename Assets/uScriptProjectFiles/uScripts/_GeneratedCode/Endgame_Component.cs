@@ -5,16 +5,15 @@ using System.Collections.Generic;
 
 // This is the component script that you should assign to GameObjects to use this graph on them. Use the uScript/Graphs section of Unity's "Component" menu to assign this graph to a selected GameObject.
 
-[AddComponentMenu("uScript/Graphs/blockdropper")]
-public class blockdropper_Component : uScriptCode
+[AddComponentMenu("uScript/Graphs/Endgame")]
+public class Endgame_Component : uScriptCode
 {
    #pragma warning disable 414
-   public blockdropper ExposedVariables = new blockdropper( ); 
+   public Endgame ExposedVariables = new Endgame( ); 
    #pragma warning restore 414
    
-   public System.Int32 amount { get { return ExposedVariables.amount; } set { ExposedVariables.amount = value; } } 
-   public System.Int32 amount2 { get { return ExposedVariables.amount2; } set { ExposedVariables.amount2 = value; } } 
-   public UnityEngine.GameObject ForceField { get { return ExposedVariables.ForceField; } set { ExposedVariables.ForceField = value; } } 
+   public UnityEngine.GameObject EndDoor { get { return ExposedVariables.EndDoor; } set { ExposedVariables.EndDoor = value; } } 
+   public UnityEngine.GameObject EndDoor2 { get { return ExposedVariables.EndDoor2; } set { ExposedVariables.EndDoor2 = value; } } 
    
    void Awake( )
    {
@@ -53,11 +52,6 @@ public class blockdropper_Component : uScriptCode
    #if UNITY_EDITOR
       void OnDrawGizmos( )
       {
-         {
-            GameObject gameObject;
-            gameObject = GameObject.Find( "/BlockDropperPlane" ); 
-            if ( null != gameObject ) Gizmos.DrawIcon(gameObject.transform.position, "uscript_gizmo_variables.png");
-         }
       }
    #endif
 }

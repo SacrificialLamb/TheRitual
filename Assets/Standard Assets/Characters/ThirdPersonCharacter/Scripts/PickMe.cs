@@ -20,8 +20,9 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         {
             if (player != null)
             {
-                pushPos = player.transform.position + Vector3.Scale(player.transform.forward.normalized, new Vector3(1.5f, 0, 1.5f)) + player.transform.up.normalized;
-                transform.Translate(pushPos - transform.position, Space.World);
+                pushPos = player.transform.position + Vector3.Scale(player.transform.forward.normalized, new Vector3(1.5f, 0, 1.5f)) + player.transform.up.normalized - transform.position;
+                //transform.Translate(pushPos - transform.position, Space.World);
+                transform.GetComponent<Rigidbody>().AddForce(pushPos*5 - transform.GetComponent<Rigidbody>().velocity);
                 transform.GetComponent<Rigidbody>().AddForce(-Physics.gravity);
 
                 /*if (Vector3.Distance(transform.position, player.transform.position) > 4)
@@ -36,24 +37,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         public void SetPlayer(ThirdPersonUserControl tpuc)
         {
             player = tpuc;
-            Edible(true);
-        }
-
-        public void Edible(bool freezeRotation)
-        {
-            if (freezeRotation)
-            {
-                //GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-                //transform.rotation = new Quaternion(0.0f, 0.0f, 0.0f, 0.0f);
-            }
-            else {
-                //GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-                //transform.SetParent(null);
-
-            }
-            //transform.GetComponent<Rigidbody>().isKinematic = freezeRotation;
-            //transform.GetComponent<Collider>().enabled = !freezeRotation;
-
         }
     }
 }

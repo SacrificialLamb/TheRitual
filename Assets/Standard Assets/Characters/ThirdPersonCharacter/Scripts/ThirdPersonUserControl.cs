@@ -42,20 +42,20 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 {
                     detachGrab();
                 }
-                else if (c.gameObject.CompareTag("PointCube"))
-                {
-                    grabbed = c.gameObject;
-                    grabbed.AddComponent<PickMe>();
-                    grabbed.GetComponent<PickMe>().SetPlayer(this);
+                else {
+                    PickMe script = c.gameObject.GetComponent<PickMe>();
+                    if (script != null)
+                    {
+                        grabbed = c.gameObject;
+                        script.SetPlayer(this);
+                    }
                 }
             }
         }
 
         public void detachGrab()
         {
-            grabbed.GetComponent<PickMe>().Edible(false);
-            Component com = grabbed.GetComponent<PickMe>();
-            if (com != null) Destroy(com);
+            grabbed.GetComponent<PickMe>().SetPlayer(null);
             grabbed = null;
         }
 

@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UseAsMaster: 0
-  undoObjectReference: {fileID: 516805638}
+  undoObjectReference: {fileID: 1686610895}
   m_Breakpoints: []
   CurrentBreakpoint: 
   GameObjects:
@@ -492,18 +492,6 @@ GameObject:
 GameObject:
   m_PrefabParentObject: {fileID: 100044, guid: 5c8bda31eb4cfe446b026ff6f07add7d, type: 3}
   m_PrefabInternal: {fileID: 688202505}
---- !u!114 &516805638
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1645089201, guid: f5996eebbb882b848ba21661e5edc506, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UndoNumber: 121
 --- !u!1 &522768860 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100010, guid: 5c8bda31eb4cfe446b026ff6f07add7d, type: 3}
@@ -528,6 +516,7 @@ GameObject:
   - 65: {fileID: 607046854}
   - 23: {fileID: 607046853}
   - 54: {fileID: 607046857}
+  - 114: {fileID: 607046858}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: PointCube
@@ -607,6 +596,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &607046858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 607046852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d91acb2e04f42594d8bdb35364159c5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  pushPos: {x: 0, y: 0, z: 0}
 --- !u!1 &670924258 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100002, guid: 5c8bda31eb4cfe446b026ff6f07add7d, type: 3}
@@ -843,6 +845,7 @@ GameObject:
   - 65: {fileID: 1176962656}
   - 23: {fileID: 1176962655}
   - 54: {fileID: 1176962659}
+  - 114: {fileID: 1176962660}
   m_Layer: 0
   m_Name: Cube (2)
   m_TagString: PointCube
@@ -922,6 +925,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1176962660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1176962654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d91acb2e04f42594d8bdb35364159c5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  pushPos: {x: 0, y: 0, z: 0}
 --- !u!1 &1177378519 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100030, guid: 5c8bda31eb4cfe446b026ff6f07add7d, type: 3}
@@ -1057,7 +1073,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1243886232}
   m_LocalRotation: {x: 0, y: 0.18990761, z: 0, w: 0.981802}
-  m_LocalPosition: {x: 55.8, y: 2.57, z: -19.108765}
+  m_LocalPosition: {x: 55.8, y: 3.14, z: -19.108765}
   m_LocalScale: {x: 3.2320502, y: 1, z: 2.494486}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1114,6 +1130,7 @@ GameObject:
   - 65: {fileID: 1547983368}
   - 23: {fileID: 1547983367}
   - 54: {fileID: 1547983371}
+  - 114: {fileID: 1547983372}
   m_Layer: 0
   m_Name: Cube (4)
   m_TagString: PointCube
@@ -1173,7 +1190,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1547983366}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 49.18, y: 6.261698, z: -22.9}
+  m_LocalPosition: {x: 49.18, y: 6.84, z: -22.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1193,6 +1210,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1547983372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1547983366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d91acb2e04f42594d8bdb35364159c5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  pushPos: {x: 0, y: 0, z: 0}
 --- !u!1 &1579260484 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100008, guid: 5c8bda31eb4cfe446b026ff6f07add7d, type: 3}
@@ -1201,6 +1231,18 @@ GameObject:
 GameObject:
   m_PrefabParentObject: {fileID: 100068, guid: 5c8bda31eb4cfe446b026ff6f07add7d, type: 3}
   m_PrefabInternal: {fileID: 688202505}
+--- !u!114 &1686610895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1645089201, guid: f5996eebbb882b848ba21661e5edc506, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UndoNumber: 0
 --- !u!1 &1695619392
 GameObject:
   m_ObjectHideFlags: 0
@@ -1647,6 +1689,7 @@ GameObject:
   - 65: {fileID: 2069018329}
   - 23: {fileID: 2069018328}
   - 54: {fileID: 2069018332}
+  - 114: {fileID: 2069018333}
   m_Layer: 0
   m_Name: Cube (5)
   m_TagString: PointCube
@@ -1726,6 +1769,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2069018333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2069018327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d91acb2e04f42594d8bdb35364159c5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  pushPos: {x: 0, y: 0, z: 0}
 --- !u!1 &2096595817
 GameObject:
   m_ObjectHideFlags: 0

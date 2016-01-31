@@ -452,6 +452,87 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+--- !u!114 &891035546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1645089201, guid: f5996eebbb882b848ba21661e5edc506, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UndoNumber: 90
+--- !u!1 &1456812291
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1456812293}
+  - 114: {fileID: 1456812292}
+  m_Layer: 0
+  m_Name: _uScript
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1456812292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1456812291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -651471641, guid: f5996eebbb882b848ba21661e5edc506, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UseAsMaster: 0
+  undoObjectReference: {fileID: 891035546}
+  m_Breakpoints: []
+  CurrentBreakpoint: 
+  GameObjects:
+  - {fileID: 1456812291}
+  - {fileID: 13408613}
+  - {fileID: 181965158}
+  - {fileID: 349119669}
+  - {fileID: 400201154}
+  - {fileID: 571599191}
+  - {fileID: 1686561772}
+  - {fileID: 1834160933}
+  - {fileID: 1881964792}
+  - {fileID: 2061368480}
+  - {fileID: 2081530331}
+  GameObjectGuids:
+  - 971532ac-ccc7-4120-9e59-6548d3ea8dbb
+  - 531932eb-c70e-4753-93f9-b9bbcd94c2c5
+  - 5b6dd1f0-175c-44f2-a605-bc7ca00f8c43
+  - 04e4c3fc-40b3-4019-8731-4fe7ac06dacd
+  - 0412c1fe-6fcb-4a1f-a974-f6c123cf94db
+  - a76a55d3-306d-46a1-bfcd-155ee188a0a7
+  - a2026293-9862-4ca3-9e95-0f1c010e68f5
+  - 3644aaec-57d0-4723-98e9-9fcf2c7f20e8
+  - 732cff03-4e10-4a52-a3e3-990cdb2d502a
+  - fd972a50-8b83-476c-8ad2-d6925d7b926f
+  - 82faac57-90e7-4931-8cf5-d009fe048bc1
+  m_uScriptsToAttach: []
+  m_FilesToAddToVC: []
+--- !u!4 &1456812293
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1456812291}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
 --- !u!1 &1686561772
 GameObject:
   m_ObjectHideFlags: 0

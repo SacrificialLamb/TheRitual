@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UseAsMaster: 0
-  undoObjectReference: {fileID: 1686610895}
+  undoObjectReference: {fileID: 990793021}
   m_Breakpoints: []
   CurrentBreakpoint: 
   GameObjects:
@@ -763,6 +763,18 @@ GameObject:
 GameObject:
   m_PrefabParentObject: {fileID: 100010, guid: e13e1ee978f89c54bb0da3d70d48e2b6, type: 3}
   m_PrefabInternal: {fileID: 1250077885}
+--- !u!114 &990793021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1645089201, guid: f5996eebbb882b848ba21661e5edc506, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UndoNumber: 18
 --- !u!1 &1021975338 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100052, guid: e13e1ee978f89c54bb0da3d70d48e2b6, type: 3}
@@ -906,14 +918,14 @@ Light:
   serializedVersion: 6
   m_Type: 1
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 0.28
+  m_Intensity: 2.48
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
     m_Resolution: -1
-    m_Strength: 1
+    m_Strength: 0.45
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -952,6 +964,7 @@ GameObject:
   - 33: {fileID: 1243886235}
   - 64: {fileID: 1243886234}
   - 23: {fileID: 1243886233}
+  - 114: {fileID: 1243886237}
   m_Layer: 0
   m_Name: BlockDropperPlane
   m_TagString: Untagged
@@ -1016,6 +1029,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
+--- !u!114 &1243886237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1243886232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e742770ace1be564d93be46409c57eee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1250077885
 Prefab:
   m_ObjectHideFlags: 0
@@ -1231,18 +1255,6 @@ GameObject:
 GameObject:
   m_PrefabParentObject: {fileID: 100074, guid: e13e1ee978f89c54bb0da3d70d48e2b6, type: 3}
   m_PrefabInternal: {fileID: 1250077885}
---- !u!114 &1686610895
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1645089201, guid: f5996eebbb882b848ba21661e5edc506, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UndoNumber: 0
 --- !u!1 &1695298855 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100076, guid: e13e1ee978f89c54bb0da3d70d48e2b6, type: 3}

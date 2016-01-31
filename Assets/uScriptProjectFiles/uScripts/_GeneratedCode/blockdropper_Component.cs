@@ -5,16 +5,15 @@ using System.Collections.Generic;
 
 // This is the component script that you should assign to GameObjects to use this graph on them. Use the uScript/Graphs section of Unity's "Component" menu to assign this graph to a selected GameObject.
 
-[AddComponentMenu("uScript/Graphs/lavaporter")]
-public class lavaporter_Component : uScriptCode
+[AddComponentMenu("uScript/Graphs/blockdropper")]
+public class blockdropper_Component : uScriptCode
 {
    #pragma warning disable 414
-   public lavaporter ExposedVariables = new lavaporter( ); 
+   public blockdropper ExposedVariables = new blockdropper( ); 
    #pragma warning restore 414
    
-   public UnityEngine.Vector3 cube2_final { get { return ExposedVariables.cube2_final; } set { ExposedVariables.cube2_final = value; } } 
-   public UnityEngine.Vector3 playerspawn { get { return ExposedVariables.playerspawn; } set { ExposedVariables.playerspawn = value; } } 
-   public UnityEngine.Vector3 cube1_final { get { return ExposedVariables.cube1_final; } set { ExposedVariables.cube1_final = value; } } 
+   public System.Int32 amount { get { return ExposedVariables.amount; } set { ExposedVariables.amount = value; } } 
+   public System.Int32 amount2 { get { return ExposedVariables.amount2; } set { ExposedVariables.amount2 = value; } } 
    
    void Awake( )
    {
@@ -55,8 +54,8 @@ public class lavaporter_Component : uScriptCode
       {
          {
             GameObject gameObject;
-            gameObject = GameObject.Find( "KillFloor" ); 
-            if ( null != gameObject ) Gizmos.DrawIcon(gameObject.transform.position, "uscript_gizmo_events.png");
+            gameObject = GameObject.Find( "/BlockDropperPlane" ); 
+            if ( null != gameObject ) Gizmos.DrawIcon(gameObject.transform.position, "uscript_gizmo_variables.png");
          }
       }
    #endif

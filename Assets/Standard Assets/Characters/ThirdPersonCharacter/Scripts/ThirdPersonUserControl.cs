@@ -13,7 +13,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private Vector3 m_Move;
         private bool m_Jump;                      // the world-relative desired move direction, calculated from the camForward and user input.
         private bool camBack;
-
+        public GameObject grabbed;
         
         private void Start()
         {
@@ -32,6 +32,31 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             // get the third person character ( this should never be null due to require component )
             m_Character = GetComponent<ThirdPersonCharacter>();
             camBack = false;
+        }
+
+        void OnCollisionStay(Collision c)
+        {
+            if (CrossPlatformInputManager.GetButtonDown("Fire1"))
+            {
+                if(grabbed != null)
+                {
+                    detachGrab();
+                }
+                else if (c.gameObject.CompareTag("PointCube"))
+                {
+                    grabbed = c.gameObject;
+                    grabbed.AddComponent<PickMe>();
+                    grabbed.GetComponent<PickMe>().SetPlayer(this);
+                }
+            }
+        }
+
+        public void detachGrab()
+        {
+            grabbed.GetComponent<PickMe>().Edible(false);
+            Component com = grabbed.GetComponent<PickMe>();
+            if (com != null) Destroy(com);
+            grabbed = null;
         }
 
 

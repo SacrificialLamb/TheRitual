@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - KillFloor
+  - Returnable
+  - Cube1
+  - Cube2
   layers:
   - Default
   - TransparentFX
